@@ -142,7 +142,7 @@ def dictmap(requests, stream=False, size=None, exception_handler=None, gtimeout=
     requests = dict(requests)
 
     pool = Pool(size) if size else None
-    jobs = [send(r, pool, stream=stream) for r in requests]
+    jobs = [send(r, pool, stream=stream) for r in requests.values()]
     gevent.joinall(jobs, timeout=gtimeout)
 
     ret = {}
